@@ -27,11 +27,12 @@ public class WorldInteraction : MonoBehaviour
             GameObject interactedObject = interactionInfo.collider.gameObject;
             if (interactedObject.tag == "Interactable Object")
             {
-                Debug.Log("Interactable interacted.");
+                interactedObject.GetComponent<Interactable>().MoveToInteraction(playerAgent);
             }
             else
             {
                 playerAgent.destination = interactionInfo.point;
+                playerAgent.stoppingDistance = 0;
             }
         }
     }
