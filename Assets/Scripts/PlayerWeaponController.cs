@@ -29,11 +29,28 @@ public class PlayerWeaponController : MonoBehaviour
         equippedWeapon.Stats = itemToEquip.Stats;
         EquippedWeapon.transform.SetParent(playerHand.transform);
         characterStat.AddStatBonus(itemToEquip.Stats);
-        Debug.Log(equippedWeapon.Stats[0].GetCalculatedStatValue());
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            PerformWeaponAttack();
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Space))
+        {
+            PerformWeaponAttack();
+        }
     }
 
     public void PerformWeaponAttack()
     {
         equippedWeapon.PerformAttack();
+    }
+
+    public void PerformWeaponSpecialAttack()
+    {
+        equippedWeapon.PerformSpecialAttack();
     }
 }

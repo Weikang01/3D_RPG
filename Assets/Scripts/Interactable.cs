@@ -8,14 +8,15 @@ public class Interactable : MonoBehaviour
     [HideInInspector]
     public NavMeshAgent playerAgent;
     public float StoppingDistance = 3f;
-    private bool hasInteracted;
+    private bool hasInteracted = true;
+
 
     public virtual void MoveToInteraction(NavMeshAgent playerAgent)
     {
         hasInteracted = false;
         this.playerAgent = playerAgent;
         playerAgent.stoppingDistance = StoppingDistance;
-        playerAgent.destination = this.transform.position;
+        playerAgent.destination = transform.position + new Vector3(float.Epsilon, float.Epsilon);
     }
 
     private void Update()
