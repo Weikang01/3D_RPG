@@ -29,6 +29,10 @@ public class WorldInteraction : MonoBehaviour
             {
                 interactedObject.GetComponent<Interactable>().MoveToInteraction(playerAgent);
             }
+            else if (interactedObject.tag == "Enemy")
+            {
+                interactedObject.GetComponent<Interactable>().MoveToInteraction(playerAgent);
+            }
             else
             {
                 playerAgent.destination = interactionInfo.point;

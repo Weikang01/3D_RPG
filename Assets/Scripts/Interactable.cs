@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,10 +10,12 @@ public class Interactable : MonoBehaviour
     public NavMeshAgent playerAgent;
     public float StoppingDistance = 3f;
     private bool hasInteracted = true;
+    private bool isEnemy;
 
 
     public virtual void MoveToInteraction(NavMeshAgent playerAgent)
     {
+        isEnemy = gameObject.tag == "Enemy";
         hasInteracted = false;
         this.playerAgent = playerAgent;
         playerAgent.stoppingDistance = StoppingDistance;
@@ -25,10 +28,22 @@ public class Interactable : MonoBehaviour
         {
             if (playerAgent.remainingDistance <= playerAgent.stoppingDistance)
             {
+                if (!isEnemy)
+                {
+                    Interact();
+                }
+                EnsureLookDirection();
                 hasInteracted = true;
-                Interact();
             }
         }
+    }
+
+    private void EnsureLookDirection()
+    {
+        playerAgent.updatePosition = false;
+        Vector3 lookDirection = new Vector3(transform.position.x, playerAgent.transform.position.y, transform.position.z);
+        playerAgent.transform.LookAt(lookDirection);
+        playerAgent.updatePosition = true;
     }
 
     public virtual void Interact()
