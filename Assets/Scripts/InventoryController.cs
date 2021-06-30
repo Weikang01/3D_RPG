@@ -4,29 +4,18 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
+    public static InventoryController instance { get; set; }
     public PlayerWeaponController playerWeaponController;
     public ConsumableController consumableController;
-    public Item sword;
-    public Item potionLog;
 
     private void Start()
     {
+        if (instance != null && instance != this)
+            Destroy(gameObject);
+        else
+            instance = this;
+
         playerWeaponController = GetComponent<PlayerWeaponController>();
         consumableController = GetComponent<ConsumableController>();
-
-        List<BaseStat> swordStats = new List<BaseStat>();
-        swordStats.Add(new BaseStat(6, "Power", "Your power level"));
-        sword = new Item(swordStats, "staff");
-        potionLog = new Item(new List<BaseStat>(), "potion_log", "Drink this to log something cool!", "Drink", "Log Posion", false);
-
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            playerWeaponController.EquipWeapon(sword);
-            consumableController.ConsumeItem(potionLog);
-        }
     }
 }
