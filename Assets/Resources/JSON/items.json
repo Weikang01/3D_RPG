@@ -3,6 +3,7 @@
     "objectSlug": "sword",
     "itemName": "Sword",
     "description": "A long, sharp blade.",
+    "itemType": "Weapon",
     "actionName": "Equip",
     "stats": [
       {
@@ -11,7 +12,7 @@
       },
       {
         "baseValue": 4,
-        "statName": "Speed"
+        "statName": "Vitality"
       }
     ]
   },
@@ -19,6 +20,7 @@
     "objectSlug": "potion_log",
     "itemName": "Log potion",
     "description": "A potion that logs something to the console.",
+    "itemType": "Consumable",
     "actionName": "Drink",
     "itemModifier": 0
   }

@@ -29,4 +29,8 @@ public class Sword : MonoBehaviour, IWeapon
             col.gameObject.GetComponent<IEnemy>().TakeDamage(Stats[0].GetCalculatedStatValue());
         }
     }
+
+    public void CastProjectile()
+    {
+    }
 }
