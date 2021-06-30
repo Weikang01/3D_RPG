@@ -7,11 +7,15 @@ public class PlayerWeaponController : MonoBehaviour
     public GameObject playerHand;
     public GameObject EquippedWeapon { get; set; }
 
-    IWeapon equippedWeapon;
+    Transform spawnProjectile;
+    IWeapon _equippedWeapon;
     CharacterStat characterStat;
 
     private void Start()
     {
+#pragma warning disable CS0618 // Type or member is obsolete
+        spawnProjectile = transform.FindChild("ProjectileSpawn");
+#pragma warning restore CS0618 // Type or member is obsolete
         characterStat = GetComponent<CharacterStat>();
     }
 
@@ -23,10 +27,13 @@ public class PlayerWeaponController : MonoBehaviour
             Destroy(playerHand.transform.GetChild(0).gameObject);
         }
 
-        EquippedWeapon = (GameObject)Instantiate(Resources.Load<GameObject>("Weapons/" + itemToEquip.ObjectSlug), playerHand.transform.position, playerHand.transform.rotation);
-        equippedWeapon = EquippedWeapon.GetComponent<IWeapon>();
+        EquippedWeapon = Instantiate(Resources.Load<GameObject>("Weapons/" + itemToEquip.ObjectSlug), playerHand.transform.position, playerHand.transform.rotation);
+        _equippedWeapon = EquippedWeapon.GetComponent<IWeapon>();
 
-        equippedWeapon.Stats = itemToEquip.Stats;
+        if (EquippedWeapon.GetComponent<IProjectileWeapon>() != null)
+            EquippedWeapon.GetComponent<IProjectileWeapon>().ProjectileSpawn = spawnProjectile;
+
+        _equippedWeapon.Stats = itemToEquip.Stats;
         EquippedWeapon.transform.SetParent(playerHand.transform);
         characterStat.AddStatBonus(itemToEquip.Stats);
     }
@@ -46,11 +53,11 @@ public class PlayerWeaponController : MonoBehaviour
 
     public void PerformWeaponAttack()
     {
-        equippedWeapon.PerformAttack();
+        _equippedWeapon.PerformAttack();
     }
 
     public void PerformWeaponSpecialAttack()
     {
-        equippedWeapon.PerformSpecialAttack();
+        _equippedWeapon.PerformSpecialAttack();
     }
 }
