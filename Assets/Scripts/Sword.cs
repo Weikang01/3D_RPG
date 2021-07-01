@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class Sword : MonoBehaviour, IWeapon
 {
     private Animator animator;
     public List<BaseStat> Stats { get; set; }
+    public CharacterStats characterStats { get; set; }
 
     private void Start()
     {
@@ -26,7 +28,7 @@ public class Sword : MonoBehaviour, IWeapon
     {
         if (col.tag == "Enemy")
         {
-            col.gameObject.GetComponent<IEnemy>().TakeDamage(Stats[0].GetCalculatedStatValue());
+            col.gameObject.GetComponent<IEnemy>().TakeDamage(characterStats.GetStat(BaseStat.BaseStatType.Power).GetCalculatedStatValue());
         }
     }
 

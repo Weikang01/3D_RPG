@@ -20,8 +20,6 @@ public class ItemDatabase : MonoBehaviour
     private void BuildDatabase()
     {
         items = JsonConvert.DeserializeObject<List<Item>>(Resources.Load<TextAsset>("JSON/items").ToString());
-        Debug.Log(items[0].Stats[1].StatName + " Level is : " + items[0].Stats[1].GetCalculatedStatValue());
-        Debug.Log(items[1].ItemName);
     }
 
     public Item GetItem(string itemSlug)

@@ -11,7 +11,7 @@ public class PotionLog : MonoBehaviour, IConsumable
         Destroy(gameObject);
     }
 
-    public void Consume(CharacterStat stats)
+    public void Consume(CharacterStats stats)
     {
         Debug.Log("You drank a swig of the potion. Rad!");
     }

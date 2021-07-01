@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ConsumableController : MonoBehaviour
 {
-    CharacterStat stats;
+    CharacterStats stats;
 
     private void Start()
     {
-        stats = GetComponent<CharacterStat>();
+        stats = GetComponent<Player>().characterStats;
     }
 
     public void ConsumeItem(Item item)

@@ -7,12 +7,19 @@
     "actionName": "Equip",
     "stats": [
       {
-        "baseValue": 2,
+        "statType": "Power",
+        "baseValue": 4,
         "statName": "Power"
       },
       {
+        "statType": "Toughness",
         "baseValue": 4,
-        "statName": "Vitality"
+        "statName": "Toughness"
+      },
+      {
+        "statType": "AttackSpeed",
+        "baseValue": 4,
+        "statName": "Attack Speed"
       }
     ]
   },

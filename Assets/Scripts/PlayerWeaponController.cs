@@ -9,21 +9,21 @@ public class PlayerWeaponController : MonoBehaviour
 
     Transform spawnProjectile;
     IWeapon _equippedWeapon;
-    CharacterStat characterStat;
+    CharacterStats characterStats;
 
     private void Start()
     {
 #pragma warning disable CS0618 // Type or member is obsolete
         spawnProjectile = transform.FindChild("ProjectileSpawn");
 #pragma warning restore CS0618 // Type or member is obsolete
-        characterStat = GetComponent<CharacterStat>();
+        characterStats = GetComponent<Player>().characterStats;
     }
 
     public void EquipWeapon(Item itemToEquip)
     {
         if (EquippedWeapon != null)
         {
-            characterStat.RemoveStatBonus(EquippedWeapon.GetComponent<IWeapon>().Stats);
+            characterStats.RemoveStatBonus(EquippedWeapon.GetComponent<IWeapon>().Stats);
             Destroy(playerHand.transform.GetChild(0).gameObject);
         }
 
@@ -33,22 +33,18 @@ public class PlayerWeaponController : MonoBehaviour
         if (EquippedWeapon.GetComponent<IProjectileWeapon>() != null)
             EquippedWeapon.GetComponent<IProjectileWeapon>().ProjectileSpawn = spawnProjectile;
 
-        _equippedWeapon.Stats = itemToEquip.Stats;
         EquippedWeapon.transform.SetParent(playerHand.transform);
-        characterStat.AddStatBonus(itemToEquip.Stats);
+        characterStats.AddStatBonus(itemToEquip.Stats);
+        _equippedWeapon.characterStats = characterStats;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-        {
             PerformWeaponAttack();
-        }
 
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Space))
-        {
             PerformWeaponAttack();
-        }
     }
 
     public void PerformWeaponAttack()
