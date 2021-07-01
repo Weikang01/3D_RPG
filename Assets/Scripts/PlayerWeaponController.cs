@@ -34,6 +34,7 @@ public class PlayerWeaponController : MonoBehaviour
             EquippedWeapon.GetComponent<IProjectileWeapon>().ProjectileSpawn = spawnProjectile;
 
         EquippedWeapon.transform.SetParent(playerHand.transform);
+
         characterStats.AddStatBonus(itemToEquip.Stats);
         _equippedWeapon.characterStats = characterStats;
     }

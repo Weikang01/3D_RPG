@@ -1,23 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 using UnityEngine;
 
 public class Slime : MonoBehaviour, IEnemy
 {
-    public float maxHealth, power, toughness;
+
+    public LayerMask aggroLayerMask;
+    private NavMeshAgent navAgent;
+    public float maxHealth;
     public float currentHealth;
 
+    private Player player;
+
     private CharacterStats characterStats;
+    private Collider[] withinAggroColliders;
 
     private void Start()
     {
+        navAgent = GetComponent<NavMeshAgent>();
         characterStats = new CharacterStats(6, 10, 2);
         currentHealth = maxHealth;
     }
 
-    public void PerformAttack()
+    private void FixedUpdate()
     {
+        withinAggroColliders = Physics.OverlapSphere(transform.position, 10, aggroLayerMask);
+        if (withinAggroColliders.Length != 0)
+        {
+            ChasePlayer(withinAggroColliders[0].GetComponent<Player>());
+        }
+    }
 
+    void ChasePlayer(Player player)
+    {
+        this.player = player;
+        navAgent.SetDestination(player.transform.position);
+        if (navAgent.remainingDistance <= navAgent.stoppingDistance)
+        {
+            if (!IsInvoking("EnemyPerformAttack"))
+                InvokeRepeating("EnemyPerformAttack", .5f, 2f);
+        }
+        else
+        {
+            CancelInvoke("EnemyPerformAttack");
+        }
+    }
+
+    public void EnemyPerformAttack()
+    {
+        player.TakeDamage(5);
     }
 
     public void TakeDamage(int amount)
