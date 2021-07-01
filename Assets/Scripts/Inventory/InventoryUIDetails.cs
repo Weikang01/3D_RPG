@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,11 +18,13 @@ public class InventoryUIDetails : MonoBehaviour
         itemInteractButton = transform.FindChild("Item_Interact_Button").GetComponent<Button>();
         itemInteractionButtonText = itemInteractButton.transform.FindChild("Text").GetComponent<Text>();
         itemInteractButton.onClick.AddListener(OnItemInteract);
+        gameObject.SetActive(false);
 #pragma warning restore CS0618 // Type or member is obsolete
     }
 
     public void SetItem(Item item, Button selectedButton)
     {
+        gameObject.SetActive(true);
         this.item = item;
         this.selectedItemButton = selectedButton;
         itemNameText.text = item.ItemName;
@@ -42,5 +45,12 @@ public class InventoryUIDetails : MonoBehaviour
             InventoryController.instance.EquipItem(item);
             Destroy(selectedItemButton.gameObject);
         }
+        RemoveItem();
+    }
+
+    private void RemoveItem()
+    {
+        item = null;
+        gameObject.SetActive(false);
     }
 }
