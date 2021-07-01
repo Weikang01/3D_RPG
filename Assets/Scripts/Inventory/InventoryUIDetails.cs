@@ -10,6 +10,8 @@ public class InventoryUIDetails : MonoBehaviour
     Button selectedItemButton, itemInteractButton;
     Text itemNameText, itemDescriptionText, itemInteractionButtonText;
 
+    public Text statText;
+
     private void Start()
     {
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -25,6 +27,14 @@ public class InventoryUIDetails : MonoBehaviour
     public void SetItem(Item item, Button selectedButton)
     {
         gameObject.SetActive(true);
+        statText.text = "";
+        if (item.Stats != null)
+        {
+            foreach (BaseStat stat in item.Stats)
+            {
+                statText.text += stat.StatName + ": " + stat.BaseValue + "\n";
+            }
+        }
         this.item = item;
         this.selectedItemButton = selectedButton;
         itemNameText.text = item.ItemName;
