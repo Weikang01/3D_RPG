@@ -24,6 +24,30 @@
     ]
   },
   {
+    "objectSlug": "staff",
+    "itemName": "Staff",
+    "description": "A long, sharp staff.",
+    "itemType": "Weapon",
+    "actionName": "Equip",
+    "stats": [
+      {
+        "statType": "Power",
+        "baseValue": 4,
+        "statName": "Power"
+      },
+      {
+        "statType": "Toughness",
+        "baseValue": 4,
+        "statName": "Toughness"
+      },
+      {
+        "statType": "AttackSpeed",
+        "baseValue": 4,
+        "statName": "Attack Speed"
+      }
+    ]
+  },
+  {
     "objectSlug": "potion_log",
     "itemName": "Log potion",
     "description": "A potion that logs something to the console.",

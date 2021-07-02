@@ -10,6 +10,7 @@ public class PlayerWeaponController : MonoBehaviour
     Transform spawnProjectile;
     IWeapon _equippedWeapon;
     CharacterStats characterStats;
+    Item currentlyEquippedItem;
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class PlayerWeaponController : MonoBehaviour
     {
         if (EquippedWeapon != null)
         {
+            InventoryController.instance.GiveItem(currentlyEquippedItem.ObjectSlug);
             characterStats.RemoveStatBonus(EquippedWeapon.GetComponent<IWeapon>().Stats);
             Destroy(playerHand.transform.GetChild(0).gameObject);
         }
@@ -34,9 +36,9 @@ public class PlayerWeaponController : MonoBehaviour
             EquippedWeapon.GetComponent<IProjectileWeapon>().ProjectileSpawn = spawnProjectile;
 
         EquippedWeapon.transform.SetParent(playerHand.transform);
-
+        _equippedWeapon.Stats = itemToEquip.Stats;
+        currentlyEquippedItem = itemToEquip;
         characterStats.AddStatBonus(itemToEquip.Stats);
-        _equippedWeapon.characterStats = characterStats;
     }
 
     private void Update()
@@ -50,11 +52,27 @@ public class PlayerWeaponController : MonoBehaviour
 
     public void PerformWeaponAttack()
     {
-        _equippedWeapon.PerformAttack();
+        _equippedWeapon.PerformAttack(CalculateDamage());
     }
 
     public void PerformWeaponSpecialAttack()
     {
         _equippedWeapon.PerformSpecialAttack();
+    }
+
+    private int CalculateDamage()
+    {
+        int damage = characterStats.GetStat(BaseStat.BaseStatType.Power).GetCalculatedStatValue();
+        damage += CalculateCrit(damage);
+        Debug.Log(damage);
+        return damage;
+    }
+
+    private int CalculateCrit(int damage)
+    {
+        if (Random.value <= .2f)
+            return damage + (int)(damage * Random.Range(.24f, .5f));
+        else
+            return 0;
     }
 }
