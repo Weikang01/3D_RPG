@@ -8,8 +8,8 @@ public class Slime : MonoBehaviour, IEnemy
 
     public LayerMask aggroLayerMask;
     private NavMeshAgent navAgent;
-    public float maxHealth;
-    public float currentHealth;
+    public int maxHealth;
+    public int currentHealth;
 
     private Player player;
 

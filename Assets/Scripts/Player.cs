@@ -5,13 +5,14 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public CharacterStats characterStats;
-    public float currentHealth;
-    public float maxHealth;
+    public int currentHealth;
+    public int maxHealth;
 
     private void Start()
     {
         this.currentHealth = this.maxHealth;
         characterStats = new CharacterStats(10, 10, 10);
+        UIEventHandler.PlayerHealthChanged(currentHealth, maxHealth);
     }
 
     public void TakeDamage(int amount)
@@ -19,11 +20,13 @@ public class Player : MonoBehaviour
         currentHealth -= amount;
         if (currentHealth <= 0)
             Die();
+        UIEventHandler.PlayerHealthChanged(currentHealth, maxHealth);
     }
 
     void Die()
     {
         Debug.Log("Player dead. Reset health.");
         this.currentHealth = this.maxHealth;
+        UIEventHandler.PlayerHealthChanged(currentHealth, maxHealth);
     }
 }

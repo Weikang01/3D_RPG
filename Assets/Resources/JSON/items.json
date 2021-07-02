@@ -19,7 +19,7 @@
       {
         "statType": "AttackSpeed",
         "baseValue": 4,
-        "statName": "Attack Speed"
+        "statName": "Atk Spd"
       }
     ]
   },
@@ -43,7 +43,7 @@
       {
         "statType": "AttackSpeed",
         "baseValue": 4,
-        "statName": "Attack Speed"
+        "statName": "Atk Spd"
       }
     ]
   },

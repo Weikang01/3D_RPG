@@ -14,6 +14,7 @@ public class InventoryUI : MonoBehaviour
     {
         itemContainer = Resources.Load<InventoryUIItem>("UI/Item_Container");
         UIEventHandler.OnItemAddedToInventory += ItemAdded;
+        UIEventHandler.OnPlayerHealthChanged += HealthChanged;
         inventoryPanel.gameObject.SetActive(false);
     }
 
@@ -32,4 +33,7 @@ public class InventoryUI : MonoBehaviour
         emptyItem.SetItem(item);
         emptyItem.transform.SetParent(scrollViewContent);
     }
+
+    public void HealthChanged(int a, int b)
+    {}
 }
