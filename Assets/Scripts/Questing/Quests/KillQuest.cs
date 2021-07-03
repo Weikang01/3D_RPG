@@ -13,6 +13,7 @@ public class KillQuest : Quest
 
         Goals.Add(new KillGoal(this, 0, "Kill 1 Slimes", false, 0, 2));
         Goals.Add(new KillGoal(this, 1, "Kill 1 Vampires", false, 0, 1));
+        Goals.Add(new CollectionGoal(this, "potion_log", "Find a Log potion", false, 0, 1));
 
         Goals.ForEach(g => g.Init());
     }

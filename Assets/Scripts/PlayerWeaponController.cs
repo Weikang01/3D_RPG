@@ -53,11 +53,14 @@ public class PlayerWeaponController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            PerformWeaponAttack();
+        if (_equippedWeapon != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+                PerformWeaponAttack();
 
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Space))
-            PerformWeaponAttack();
+            if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Space))
+                PerformWeaponAttack();
+        }
     }
 
     public void PerformWeaponAttack()
