@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Quest
+public class Quest : MonoBehaviour
 {
     public List<Goal> Goals { get; set; } = new List<Goal>();
     public string QuestName { get; set; }
