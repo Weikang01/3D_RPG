@@ -16,8 +16,11 @@ public class Slime : MonoBehaviour, IEnemy
     private CharacterStats characterStats;
     private Collider[] withinAggroColliders;
 
+    public int Experience { get; set; }
+
     private void Start()
     {
+        Experience = 30;
         navAgent = GetComponent<NavMeshAgent>();
         characterStats = new CharacterStats(6, 10, 2);
         currentHealth = maxHealth;
@@ -59,8 +62,9 @@ public class Slime : MonoBehaviour, IEnemy
             Die();
     }
 
-    void Die()
+    public void Die()
     {
+        CombatEvents.EnemyDied(this);
         Destroy(gameObject);
     }
 }

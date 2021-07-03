@@ -31,7 +31,7 @@ public class WorldInteraction : MonoBehaviour
             }
             else if (interactedObject.tag == "Enemy")
             {
-                interactedObject.GetComponent<Interactable>().MoveToInteraction(playerAgent);
+                //interactedObject.GetComponent<Interactable>().MoveToInteraction(playerAgent);
             }
             else
             {
