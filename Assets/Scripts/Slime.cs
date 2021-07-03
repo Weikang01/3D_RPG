@@ -17,13 +17,23 @@ public class Slime : MonoBehaviour, IEnemy
     private Collider[] withinAggroColliders;
 
     public int Experience { get; set; }
+    public DropTable dropTable { get; set; }
+    public PickupItem pickupItem;
 
     private void Start()
     {
         Experience = 30;
+        dropTable = new DropTable();
+        dropTable.loot = new List<LootDrop>
+        {
+            new LootDrop("sword", 25),
+            new LootDrop("staff", 25),
+            new LootDrop("potion_log", 25)
+        };
         navAgent = GetComponent<NavMeshAgent>();
         characterStats = new CharacterStats(6, 10, 2);
         currentHealth = maxHealth;
+
     }
 
     private void FixedUpdate()
@@ -64,7 +74,18 @@ public class Slime : MonoBehaviour, IEnemy
 
     public void Die()
     {
+        DropLoot();
         CombatEvents.EnemyDied(this);
         Destroy(gameObject);
+    }
+
+    void DropLoot()
+    {
+        Item item = dropTable.GetDrop();
+        if (item != null)
+        {
+            PickupItem instance = Instantiate(pickupItem, transform.position, Quaternion.identity);
+            instance.ItemDrop = item;
+        }
     }
 }
