@@ -3476,7 +3476,7 @@ GameObject:
   - component: {fileID: 899934390}
   - component: {fileID: 899934389}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: Spawner_Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3510,6 +3510,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &905548146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 905548147}
+  m_Layer: 0
+  m_Name: Quests
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &905548147
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905548146}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &921504537
 GameObject:
@@ -5142,6 +5172,52 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1581648264
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1581648266}
+  - component: {fileID: 1581648265}
+  m_Layer: 0
+  m_Name: Spawner_Vampire
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1581648265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581648264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113a8acb13abfaa469f250deafce7c39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monster: {fileID: 5631160966641214371, guid: bcadaa327154fce45af139d8a75b08a8, type: 3}
+  respawn: 1
+  spawnDelay: 4
+--- !u!4 &1581648266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581648264}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -22.8, y: -0.5999758, z: -38.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1600281780
 GameObject:
   m_ObjectHideFlags: 0
@@ -6365,7 +6441,7 @@ GameObject:
   - component: {fileID: 1855519756}
   - component: {fileID: 1855519755}
   m_Layer: 0
-  m_Name: NPC
+  m_Name: Quest Man
   m_TagString: Interactable Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6380,15 +6456,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1855519754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e49afba35ba3964ba8037d0c8caf250, type: 3}
+  m_Script: {fileID: 11500000, guid: b1ad1bbaf267bea4184ba67803d8df24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAgent: {fileID: 921504539}
+  playerAgent: {fileID: 0}
   StoppingDistance: 3
   dialogue:
-  - Go fuck yourself!
-  - Stupid asshole!
-  Name: Davi
+  - Please help!
+  - There are a lot of slime and vampire here!
+  - Please kill them all!
+  Name: Quest Man
+  quests: {fileID: 905548146}
+  questType: KillQuest
 --- !u!136 &1855519756
 CapsuleCollider:
   m_ObjectHideFlags: 0

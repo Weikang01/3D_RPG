@@ -15,14 +15,11 @@ public class Quest : MonoBehaviour
     public void CheckGoals()
     {
         Completed = Goals.All(g => g.Completed);
-        if (Completed) GiveReward();
     }
 
-    void GiveReward()
+    public void GiveReward()
     {
         if (ItemReward != null)
-        {
             InventoryController.instance.GiveItem(ItemReward);
-        }
     }
 }

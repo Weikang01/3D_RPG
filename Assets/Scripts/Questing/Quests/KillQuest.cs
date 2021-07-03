@@ -11,8 +11,8 @@ public class KillQuest : Quest
         ItemReward = ItemDatabase.instance.GetItem("potion_log");
         ExperienceReward = 100;
 
-        Goals.Add(new KillGoal(0, "Kill 5 Slimes", false, 0, 5));
-        Goals.Add(new KillGoal(1, "Kill 2 Vampires", false, 0, 2));
+        Goals.Add(new KillGoal(this, 0, "Kill 1 Slimes", false, 0, 2));
+        Goals.Add(new KillGoal(this, 1, "Kill 1 Vampires", false, 0, 1));
 
         Goals.ForEach(g => g.Init());
     }

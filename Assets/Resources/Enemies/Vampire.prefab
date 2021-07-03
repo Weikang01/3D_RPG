@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1544677789813557916
+--- !u!1 &5631160966641214371
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,26 +8,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1544677789813557889}
-  - component: {fileID: 1544677789813557888}
-  - component: {fileID: 1544677789813557891}
-  - component: {fileID: 1544677789813557890}
-  - component: {fileID: 1544677789813557917}
-  - component: {fileID: 1544677789813557895}
+  - component: {fileID: 5631160966641214398}
+  - component: {fileID: 5631160966641214399}
+  - component: {fileID: 5631160966641214396}
+  - component: {fileID: 5631160966641214397}
+  - component: {fileID: 5631160966641214392}
+  - component: {fileID: 7675744798085864407}
   m_Layer: 0
-  m_Name: Slime
+  m_Name: Vampire
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1544677789813557889
+--- !u!4 &5631160966641214398
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1544677789813557916}
+  m_GameObject: {fileID: 5631160966641214371}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -35,21 +35,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1544677789813557888
+--- !u!33 &5631160966641214399
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1544677789813557916}
+  m_GameObject: {fileID: 5631160966641214371}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1544677789813557891
+--- !u!23 &5631160966641214396
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1544677789813557916}
+  m_GameObject: {fileID: 5631160966641214371}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -85,44 +85,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1544677789813557890
+--- !u!65 &5631160966641214397
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1544677789813557916}
+  m_GameObject: {fileID: 5631160966641214371}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1544677789813557917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1544677789813557916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee342b3981706cf4baea2e9c2e8b46b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aggroLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  maxHealth: 20
-  currentHealth: 0
-  pickupItem: {fileID: 7723499320667522763, guid: e147be615c3d6134180bb964166a38b7, type: 3}
---- !u!195 &1544677789813557895
+--- !u!195 &5631160966641214392
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1544677789813557916}
+  m_GameObject: {fileID: 5631160966641214371}
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
@@ -138,3 +120,21 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7675744798085864407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5631160966641214371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f414028848fa04086bf3a1c0a58a1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aggroLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  maxHealth: 30
+  currentHealth: 0
+  pickupItem: {fileID: 7723499320667522763, guid: e147be615c3d6134180bb964166a38b7, type: 3}
