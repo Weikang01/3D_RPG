@@ -19,11 +19,13 @@ public class Slime : MonoBehaviour, IEnemy
     public int Experience { get; set; }
     public DropTable dropTable { get; set; }
     public Spawner spawner { get; set; }
+    public int ID { get; set; }
 
     public PickupItem pickupItem;
 
     private void Start()
     {
+        ID = 0;
         Experience = 30;
         dropTable = new DropTable();
         dropTable.loot = new List<LootDrop>
